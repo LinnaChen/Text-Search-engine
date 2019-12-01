@@ -1,0 +1,41 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Search page</title>
+    <link href="{% static 'hello.css' %}" rel="stylesheet">
+    <link href="/static/style.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/index.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+<body>
+<div id="container">
+    <div id="bd">
+        <div id="main">
+            <h1 class="title">
+                
+                <div class="logo large"></div>
+            </h1>           
+            
+        <div class="inputArea">
+            <form action="" method="post">
+                {{ form }}
+                {% csrf_token %}
+                <input class="searchInput" type="text" name="q" value="{{ context }}"/>
+
+                <button class="btn btn-primary" type="submit">Search</button>
+            </form>
+        </div>
+        </div><!-- End of main -->
+    </div><!--End of bd-->
+    
+    <div class="foot">
+        <div class="wrap">
+            <div class="copyright">Copyright &copy; BNU-HKBU UICDS <br> WorkshopII Final Project</div>
+        </div>
+    </div>
+</div><!--End of contain-->
+</body>
+</html>

@@ -1,0 +1,79 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Result page</title>
+    <link href="{% static 'hello.css' %}" rel="stylesheet">
+    <link href="/static/style.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/index.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/result.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+<body>
+
+<div id="container">
+    <div id="hd">
+        <a href="/main/">
+            <div class="resultlogo">
+
+            </div>
+        </a>
+        
+        <div class="inputArea">
+            <form action="" method="post">
+                {% csrf_token %}
+                <input class="searchInput" type="text" id="searchText" name="q" value="{{ content }}"/>
+
+                <button class="btn btn-primary" type="submit">Search</button>
+            </form>
+        <span class="resultTotal" style="color:grey">
+            About&nbsp;
+            <span class="totalResult">{{ length }}</span>
+                        &nbsp;results(
+            <span class="time">{{ time }}</span>
+            seconds)
+        </span>
+        </div>
+        
+    </div>
+
+    <div class="resultArea">
+       <br>
+        
+        <div class="resultList" id="resultList">
+            <div class="resultItem" name = "resultItem[]" id ="resultItem">
+            {% csrf_token %}
+            {% for key,value in result.items %}
+            <a base target="_blank" href="/static/RawData/{{key}}">
+                <p>{{key}}</p>
+            </a>    
+                <p id="para" style="font-size: 12px">{{value}}</p>
+                 
+            {% endfor %}
+            </div>
+
+
+        </div>
+    </div>
+</div>
+</body>
+<script>
+
+var text = document.getElementById("searchText").value;
+var search = document.getElementById("resultItem");
+var searchpara = document.getElementById("para").innerHTML;
+    
+searchpara = searchpara.toString();
+var pattern = new RegExp("("+text+")", "gi");
+var new_text = searchpara.replace(pattern, "<span class='highlight'><strong>"+text+"</strong></span>");
+document.getElementById("para").innerHTML = new_text;
+    
+
+
+    
+
+</script>
+
+</html>

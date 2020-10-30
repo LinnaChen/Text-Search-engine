@@ -14,6 +14,9 @@ Major components:
 Topics covered： Hadoop, web crawling, text processing, python rank, map-reduce, web frontend and django.
 
 group information: 
-陈冬娜 Linna 1730026004  implement Web server and interface
-江昱辰 Marco 1730026035  implement Text files collection
-杨鼎涛 Young 1730026131  implement index and Rank
+陈冬娜 Linna implement Web server and interface   
+江昱辰 Marco implement Text files collection    
+杨鼎涛 Young implement index and Rank
+
+BNU-HKBU UIC
+2019 Summer
